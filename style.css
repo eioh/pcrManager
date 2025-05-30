@@ -1,0 +1,173 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Heading for "Add New Character" */
+h2 {
+    color: #2c3e50;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px; /* Increased padding */
+    text-align: left;
+    vertical-align: middle; /* Align content vertically */
+}
+
+thead th {
+    background-color: #3498db; /* Primary color for header */
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase header text */
+}
+
+/* Striped Rows for Table Body */
+tbody tr:nth-of-type(even) {
+    background-color: #ecf0f1;
+}
+
+tbody tr:hover {
+    background-color: #dcf0fa; /* Hover effect for rows */
+}
+
+/* Input Fields Styling (shared for form and table) */
+input[type="text"],
+input[type="number"],
+select { /* Added select in case it's used in the future */
+    width: 95%; /* Adjusted width */
+    padding: 10px;
+    margin: 2px 0; /* Reduced margin for table inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important for padding and width */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #3498db;
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Specific styling for inputs within the table to be less obtrusive */
+td input[type="number"] {
+    width: 80px; /* Smaller width for number inputs in table */
+    padding: 6px;
+}
+td input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.2); /* Slightly larger checkboxes */
+}
+
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* "Add Character" Button */
+#add-character-btn {
+    background-color: #2ecc71; /* Green for add */
+    color: white;
+}
+
+#add-character-btn:hover {
+    background-color: #27ae60;
+}
+
+/* "Delete" Buttons in Table */
+td button {
+    background-color: #e74c3c; /* Red for delete */
+    color: white;
+    padding: 8px 15px; /* Slightly smaller padding for delete buttons */
+    font-size: 14px;
+}
+
+td button:hover {
+    background-color: #c0392b;
+}
+
+/* "Add New Character" Form Layout */
+#add-character-form div, /* Assuming you might wrap the form inputs in a div or use the existing structure */
+body > div { /* Targeting the divs directly under body for the form */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center; /* Align label and input */
+}
+
+#add-character-form label,
+body > div > label { /* Targeting labels within those divs */
+    flex-basis: 220px; /* Fixed width for labels */
+    margin-right: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Ensure inputs in the form take remaining space */
+#add-character-form input[type="text"],
+#add-character-form input[type="number"],
+body > div > input[type="text"],
+body > div > input[type="number"] {
+    flex-grow: 1;
+    width: auto; /* Override previous width setting for form inputs */
+}
+
+/* Responsive adjustments (optional, but good practice) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #add-character-form div,
+    body > div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #add-character-form label,
+    body > div > label {
+        flex-basis: auto;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    td input[type="number"] {
+        width: 100% !important; /* Full width on smaller screens */
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+}
