@@ -1,0 +1,61 @@
+.inputNumber {
+  width: 70px; /* Consistent width for number inputs */
+  padding: 8px 6px; /* Adjusted padding */
+  border: 1px solid #ced4da; /* Standard Bootstrap-like border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.inputNumber:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.checkbox {
+  cursor: pointer;
+  transform: scale(1.3); /* Slightly larger */
+  margin: 0 auto; /* Center in cell if possible, depends on td text-align */
+  display: block; /* To allow margin auto to work */
+}
+
+.deleteButton {
+  padding: 8px 12px;
+  background-color: #e74c3c; /* Red for delete */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em; /* Slightly smaller font */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Adjustments for cell content if needed, e.g., ensuring inputs don't cause weird height changes */
+.cellContent {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content like checkboxes or small inputs */
+}
+
+/* Specifically for the name cell, if it needs different alignment */
+.nameCell {
+  text-align: left; /* Default, but can be explicit */
+}
+
+/* Ensure input fields don't cause cell to expand excessively on small screens if not using horizontal scroll */
+@media (max-width: 768px) {
+  .inputNumber {
+    width: 100%; /* Full width in card/block display if that mode was used */
+                  /* For horizontal scroll, this might not be desired.
+                     If table cells become display:block, then this makes sense.
+                     Given the current CharacterTable.module.css, this won't apply as cells remain table-cell.
+                     If using a card-like layout for rows, this would be relevant.
+                   */
+  }
+}

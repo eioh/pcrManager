@@ -1,59 +1,84 @@
-# Princess Connect Re:Dive Character Manager
+# プリコネR キャラクター管理 (React版)
 
-## Description
+## 概要
 
-This application helps you manage your characters for the game Princess Connect Re:Dive. You can keep track of their Limit Break status, Stars, Rank, and Special Equipment levels. The data is saved locally in your web browser's local storage, so your character list will persist between sessions on the same browser.
+ゲーム「プリンセスコネクト！Re:Dive」のキャラクター育成状況を管理するためのReactベースのWebアプリケーションです。データはブラウザのローカルストレージに保存されます。
 
-## How to Use
+## 主な機能
 
-### Opening the Application
+*   キャラクター情報の追加、編集、削除
+*   管理項目: キャラ名、限界突破、星、Rank、専用装備1レベル、専用装備2レベル
+*   レスポンシブデザイン
+*   データはローカルストレージに永続化
 
-*   **Locally**: Clone or download the repository. Open the `index.html` file directly in your web browser.
-*   **Via GitHub Pages**: If deployed, you can access it using the GitHub Pages URL (see "How to Deploy/View on GitHub Pages" below).
+## 技術スタック
 
-### Adding a New Character
+*   React
+*   CSS Modules
 
-1.  Locate the "Add New Character" section below the main table.
-2.  Enter the character's name in the "Character Name" field.
-3.  Enter the character's star level (1-6) in the "Stars" field.
-4.  Enter the character's current rank in the "Rank" field.
-5.  Enter the level for Special Equipment 1 in the "Special Equipment 1 Lv" field (0 if not applicable).
-6.  Enter the level for Special Equipment 2 in the "Special Equipment 2 Lv" field (0 if not applicable).
-7.  Click the "Add Character" button. The character will appear in the table above.
+## ディレクトリ構造 (主要なもの)
 
-### Updating Character Information
+```
+/
+├── public/
+│   └── index.html  (メインHTMLファイル)
+├── src/
+│   ├── components/ (Reactコンポーネント)
+│   │   ├── CharacterForm.js
+│   │   ├── CharacterRow.js
+│   │   └── CharacterTable.js
+│   ├── App.js          (メインアプリケーションコンポーネント)
+│   ├── App.module.css  (Appコンポーネント用スタイル)
+│   ├── index.js        (Reactアプリケーションのエントリーポイント)
+│   └── index.css       (グローバルスタイル)
+├── package.json
+└── README.md
+```
 
-Character information can be updated directly in the table:
+## 利用方法 (ローカル開発)
 
-*   **Limit Break**: Click the checkbox in the "Limit Break" column for the respective character to toggle its status.
-*   **Stars**: Click into the number field in the "Stars" column for a character and change its value (1-6).
-*   **Rank**: Click into the number field in the "Rank" column and change its value.
-*   **Special Equipment Levels**: Click into the number fields in the "Special Equipment 1 Lv" or "Special Equipment 2 Lv" columns and change their values.
+1.  **リポジトリをクローン**: `git clone <repository-url>`
+2.  **ディレクトリに移動**: `cd <repository-name>`
+3.  **依存関係をインストール**: `npm install`
+4.  **開発サーバーを起動**: `npm start`
+    *   ブラウザで `http://localhost:3000` が自動的に開きます。
 
-All changes are saved automatically to your browser's local storage.
+## 本番用ビルド
 
-### Deleting a Character
+*   `npm run build` コマンドを実行すると、`build` ディレクトリに最適化された静的ファイルが生成されます。
 
-1.  Find the character you wish to remove in the table.
-2.  Click the "Delete" button in the "Actions" column for that character's row.
-3.  The character will be removed from the table and from local storage.
+## GitHub Pagesへのデプロイ
 
-### Data Storage
+本アプリケーションはGitHub Pagesを利用して簡単にデプロイおよび公開することができます。
 
-This application uses your web browser's **local storage** to save your character data. This means the data is stored on your computer and will persist when you close and reopen the browser. However, it is specific to the browser you use (e.g., data saved in Chrome will not be visible in Firefox). Clearing your browser's cache or local storage for this site will erase your data.
+1.  **`package.json` の設定**:
+    *   プロジェクトのルートにある `package.json` ファイルを開きます。
+    *   `"homepage"` フィールドの値を、あなたのGitHub PagesのURLに正しく書き換えます。プレースホルダー `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME` を実際のユーザー名とリポジトリ名で置き換えてください。
+        ```json
+        "homepage": "https://your-username.github.io/your-repository-name"
+        ```
 
-## How to Deploy/View on GitHub Pages
+2.  **変更のコミットとプッシュ**:
+    *   `package.json` に加えた変更をコミットし、GitHubリポジトリにプッシュします。
+        ```bash
+        git add package.json
+        git commit -m "Configure homepage for GitHub Pages"
+        git push
+        ```
 
-1.  **Commit Files**: Ensure `index.html`, `style.css`, and `app.js` are committed and pushed to your GitHub repository.
-2.  **Enable GitHub Pages**:
-    *   In your GitHub repository, go to "Settings".
-    *   Navigate to the "Pages" section in the sidebar.
-    *   Under "Build and deployment", for "Source", select "Deploy from a branch".
-    *   Choose the branch you want to deploy from (e.g., `main` or `master`).
-    *   For the folder, select `/ (root)`.
-    *   Click "Save".
-3.  **Access Your Site**:
-    *   GitHub Pages will provide you with a URL, typically in the format: `https://<your-username>.github.io/<your-repository-name>/`
-    *   It might take a few minutes for the site to become live after enabling GitHub Pages.
+3.  **デプロイコマンドの実行**:
+    *   ターミナルで以下のコマンドを実行します。
+        ```bash
+        npm run deploy
+        ```
+    *   このコマンドは、まず `predeploy` スクリプト (`npm run build`) を実行してアプリケーションをビルドし、その後 `deploy` スクリプト (`gh-pages -d build`) が `build` ディレクトリの内容を `gh-pages` という名前のブランチにプッシュします。このブランチは自動的に作成または更新されます。
 
-Enjoy managing your Priconne characters!
+4.  **リポジトリ設定の確認**:
+    *   GitHubリポジトリの **Settings** タブに移動し、左側のメニューから **Pages** を選択します。
+    *   "Build and deployment" の下にある "Source" が **"Deploy from a branch"** になっていることを確認します。
+    *   "Branch" が **`gh-pages`** で、フォルダが **`/(root)`** に設定されていることを確認します。通常、`npm run deploy` を初めて実行した後、これらの設定は自動的に構成されますが、念のため確認してください。もし設定が異なる場合は、手動で上記のように設定してください。
+
+5.  **アクセス**:
+    *   デプロイ処理が完了すると（数分かかることがあります）、`package.json` の `homepage` フィールドに指定したURLで、公開されたアプリケーションにアクセスできるようになります。
+
+これで、あなたのキャラクター管理アプリケーションがGitHub Pagesで公開されます。
