@@ -1,0 +1,63 @@
+.tableContainer {
+  overflow-x: auto; /* Enable horizontal scroll for responsive tables */
+  margin-top: 20px;
+  border: 1px solid #e0e0e0; /* Lighter border */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  /* min-width: 800px; */ /* Ensure table has a minimum width for horizontal scroll to be useful */
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0; /* Lighter border */
+  padding: 12px 15px; /* More padding */
+  text-align: left;
+  vertical-align: middle; /* Better vertical alignment */
+  white-space: nowrap; /* Prevent text wrapping, good for scrollable tables */
+}
+
+.table thead th { /* Renamed from .table th for specificity */
+  background-color: #f8f9fa; /* Very light grey for header */
+  color: #343a40; /* Darker text for contrast */
+  font-weight: 600; /* Slightly bolder */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #777;
+}
+
+/* Responsive: Card view for very small screens, or stick to horizontal scroll.
+   Horizontal scroll is generally simpler to implement and maintain with many columns.
+   The previous CSS had a card-like transformation, which can be complex with editable fields.
+   For this iteration, we'll ensure horizontal scroll works well.
+   If a card-based approach is strongly preferred for small screens,
+   CharacterRow would need significant changes in its JSX structure conditionally.
+*/
+
+@media (max-width: 768px) {
+  /* On smaller screens, horizontal scrolling is already enabled by .tableContainer.
+     We can add specific adjustments if needed, e.g., reducing padding further. */
+  .table th,
+  .table td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce padding on very small screens for table cells if necessary */
+    .table th,
+    .table td {
+        padding: 8px 10px;
+        font-size: 0.9em; /* Slightly smaller font for more content visibility */
+    }
+}
