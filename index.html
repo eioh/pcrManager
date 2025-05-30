@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Character Name</th>
+                <th>Limit Break</th>
+                <th>Stars (1-6)</th>
+                <th>Rank (1-max)</th>
+                <th>Special Equipment 1 Lv (0-max)</th>
+                <th>Special Equipment 2 Lv (0-max)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Character rows will be added here by JavaScript -->
+        </tbody>
+    </table>
+
+    <h2>Add New Character</h2>
+    <div>
+        <label for="new-char-name">Character Name:</label>
+        <input type="text" id="new-char-name">
+    </div>
+    <div>
+        <label for="new-char-stars">Stars (1-6):</label>
+        <input type="number" id="new-char-stars" min="1" max="6">
+    </div>
+    <div>
+        <label for="new-char-rank">Rank (1-max):</label>
+        <input type="number" id="new-char-rank" min="1">
+    </div>
+    <div>
+        <label for="new-char-se1">Special Equipment 1 Lv (0-max):</label>
+        <input type="number" id="new-char-se1" min="0">
+    </div>
+    <div>
+        <label for="new-char-se2">Special Equipment 2 Lv (0-max):</label>
+        <input type="number" id="new-char-se2" min="0">
+    </div>
+    <button id="add-character-btn">Add Character</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
